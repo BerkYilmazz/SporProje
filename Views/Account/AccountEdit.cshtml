@@ -6,38 +6,37 @@
 <head>
     <style>
         body {
-            background: rgb(102, 255, 102);
+            background: rgb(102, 153, 0);
         }
 
         .form-control:focus {
             box-shadow: none;
-            border-color: #BA68C8
+            border-color: #BA68C8;
         }
 
         .button-save {
-            background: rgb(102, 255, 102);
-            box-shadow: none;
+            background: rgb(102, 153, 0);
             color: black;
-            border: none
+            border: none;
         }
 
         .profile-button:hover {
-            background: #682773
+            background: #682773;
         }
 
         .profile-button:focus {
             background: #682773;
             box-shadow: none
-        }
+        };
 
         .profile-button:active {
             background: #682773;
-            box-shadow: none
+            box-shadow: none;
         }
 
         .back:hover {
             color: #682773;
-            cursor: pointer
+            cursor: pointer;
         }
 
         .labels {
@@ -49,7 +48,7 @@
             background: #BA68C8;
             color: #fff;
             cursor: pointer;
-            border: solid 1px #BA68C8
+            border: solid 1px #BA68C8;
         }
     </style>
 </head>
@@ -66,7 +65,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="text-right">Edit Account</h4>
                     </div>
-                    <div class="border-top border-3 mb-3" style="color: #682773"></div>
+                    <div class="border-top border-3 mb-3" style="color: #669900"></div>
                     <div class="row mt-2">
                         <div class="col-md-12"><label class="labels">Kullanıcı Adı</label><input required asp-for="UserName" type="text" class="form-control" placeholder="Kullanıcı Adı" value="@Model.UserName"></div>
                     </div>

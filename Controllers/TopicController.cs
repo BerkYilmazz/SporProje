@@ -33,6 +33,7 @@ namespace SporProje.Controllers
         [HttpPost]
         public IActionResult CreateTopic(Topic topic)
         {
+           
             if (topic==null)
             {
                 return RedirectToAction("MyTopics");
@@ -51,6 +52,7 @@ namespace SporProje.Controllers
                 context.SaveChanges();
                 return RedirectToAction("MyTopics");
             }
+        
         }
 
         [HttpGet]
@@ -64,6 +66,7 @@ namespace SporProje.Controllers
         [HttpPost]
         public async Task<IActionResult> EditTopic(Topic topic)
         {
+            
             if (ModelState.IsValid)
             {
                 context.Topics.Update(topic);
@@ -74,6 +77,7 @@ namespace SporProje.Controllers
             {
                 return View(topic);
             }
+        
         }
 
         [HttpGet]
@@ -101,12 +105,15 @@ namespace SporProje.Controllers
             }
             else
             {
+                var comment = await context.Comments.Where(t => t.TopicId == id).ToListAsync();
+                context.Comments.RemoveRange(comment);
                 context.Topics.Remove(topic);
                 context.SaveChanges();
                 return RedirectToAction("MyTopics", "Topic");
             }
-
+        
         }
 
     }
+
 }
