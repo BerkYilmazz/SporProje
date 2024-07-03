@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Comment>
+@{
+    ViewData["Title"] = "Topic Comments";
+}
+
+
+@{
+    int commentCount = 0;
+    @foreach (var item in Model)
+    {
+        commentCount++;
+    }
+
+    if (commentCount > 0)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 mt-5">
+                    <h3 class="border-bottom border-2 border-primary pb-2">Comments</h3>
+                    <ul class="list-group mt-3">
+                        @foreach (var item in Model)
+                        {
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong class="h5 border-bottom border-2">@item.User.UserName</strong>
+                                    @* <span>@item.ToShortDateString()</span> *@
+                                </div>
+                                <p>@item.CommentText</p>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 mt-5">
+                    <h2 class="border-bottom border-2 border-primary pb-2">Comments</h2>
+                    <ul class="list-group mt-3">
+                        <p class="h6">There are no comments on your topic yet..</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+
+}

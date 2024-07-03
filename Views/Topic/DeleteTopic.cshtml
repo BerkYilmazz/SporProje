@@ -1,0 +1,27 @@
+﻿@model Topic
+@{
+    ViewData["Title"] = "Are you sure to delete this Topic";
+}
+
+<div class="row">
+
+    <div class="col-sm-0 col-lg-2 col-xxl-3"></div>
+    <div class="col-sm-12 col-lg-8 col-xxl-6">
+        <div class="container mt-4">
+            <h1>Delete Topic</h1>
+            <h6>Are you really want to delete this Topic?</h6>
+            <br />
+            <br />
+            
+            <h4>Title | @Model.Title</h4>
+            <br />
+            <h5>Content | @Model.ContentText</h5>
+            <br />
+            <br />
+            <a asp-controller="Topic" asp-action="ConfirmDeleteTopic" asp-route-id="@Model.TopicId" class="btn btn-danger mt-3 mb-5">Delete</a>
+            <a asp-controller="Topic" asp-action="MyTopics" class="btn btn-secondary mt-3 mb-5">Cancel</a>
+        </div>
+    </div>
+    <div class="col-sm-0 col-lg-2 col-xxl-3"></div>
+
+</div>

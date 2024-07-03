@@ -1,0 +1,15 @@
+﻿@using System.Security.Claims
+@{
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class=""><a class="nav-link text-dark" asp-controller="UserProfile" asp-action="MyAccount">@User.FindFirst(x => x.Type == "UserName").Value</a></div>
+   
+}
+else
+{
+    <a href="@Url.Action("Login","Account")">Login</a>
+}
+
+
