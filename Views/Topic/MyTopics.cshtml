@@ -37,8 +37,9 @@
                     <a class="btn btn-sm btn-warning" asp-action="EditTopic" asp-route-id="@item.TopicId">
                         <i class="bi bi-pencil"></i> Edit
                     </a>
+                    <a class="btn btn-sm btn-success" asp-controller="Comment" asp-action="AddComment" asp-route-id="@item.TopicId" class="btn btn-success  pb-2 ms-5"><i class="bi bi-chat-dots"></i> Add Comment</a>
                     <a class="btn btn-sm btn-primary" asp-controller="Comment" asp-action="ListComments" asp-route-id="@item.TopicId">
-                        <i class="bi bi-chat-dots-fill"></i> Comment
+                        <i class="bi bi-chat-dots-fill"></i> Comments
                     </a>
 
                     <a class="btn btn-sm btn-danger" asp-action="DeleteTopic" asp-route-id="@item.TopicId">

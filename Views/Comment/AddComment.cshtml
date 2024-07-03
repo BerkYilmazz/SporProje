@@ -1,0 +1,26 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Add Comment";
+    string userId = User.FindFirst(x => x.Type == "UserId").Value;
+}
+
+<div class="row">
+
+    <div class="col-sm-0 col-lg-2 col-xxl-3"></div>
+    <div class="col-sm-12 col-lg-8 col-xxl-6">
+        <div class="container mt-4">
+            <h1>Add Comment</h1>
+            <form asp-controller="Comment" asp-action="AddComment" method="post">
+                <input type="hidden" name="TopicId" value="@Model" />
+                <input type="hidden" name="UserId" value="@userId" />
+                <div class="form-group">
+                    <label for="CommentText">Comment:</label>
+                    <textarea id="CommentText" name="CommentText" class="form-control" rows="4" name="CommentText"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-primary mt-3">Add Comment</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-0 col-lg-2 col-xxl-3"></div>
+
+</div>

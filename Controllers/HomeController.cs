@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SporProje.Models;
 using System.Diagnostics;
 
@@ -8,16 +9,18 @@ namespace SporProje.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly SporDbContext context;
+        public HomeController()
         {
-            _logger = logger;
+            context = new SporDbContext();
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var topic = await context.Topics.Include(u => u.User).ToListAsync();
+
+            return View(topic);
         }
 
         public IActionResult Privacy()

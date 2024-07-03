@@ -92,6 +92,28 @@ namespace TrendyModa.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AccountEdit()
+        {
+            int claimId = Convert.ToInt32(User.FindFirst(x => x.Type == "UserId").Value);
+            var u = context.Users.FirstOrDefault(y => y.UserId == claimId);
+            return View(u);
+        }
 
+        [HttpPost]
+        public IActionResult AccountEditConfirmed([FromForm] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var passwordHasher = new PasswordHasher<User>();
+                var hashedPassword = passwordHasher.HashPassword(user, user.Password);
+                user.Password = hashedPassword;
+                context.Users.Update(user);
+                context.SaveChanges();
+                return RedirectToAction("LogoutIndex", "Account");
+            }
+            return RedirectToAction("Index", "Home");
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Comment>
 @{
     ViewData["Title"] = "Topic Comments";
+    int u = Convert.ToInt32(User.FindFirst(u => u.Type == "UserId").Value);
 }
 
 
@@ -16,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 mt-5">
-                    <h3 class="border-bottom border-2 border-primary pb-2">Comments</h3>
+                    
                     <ul class="list-group mt-3">
                         @foreach (var item in Model)
                         {
@@ -26,6 +27,13 @@
                                     @* <span>@item.ToShortDateString()</span> *@
                                 </div>
                                 <p>@item.CommentText</p>
+                                @{
+                                    if (item.UserId==u)
+                                    {
+                                        <a class="btn btn-sm btn-warning" asp-controller="Comment" asp-action="EditComment" asp-route-id="@item.CommentId"><i class="bi bi-pencil"></i> Edit</a>
+                                        <a class="btn btn-sm btn-danger" asp-controller="Comment" asp-action="DeleteComment" asp-route-id="@item.CommentId"><i class="bi bi-trash-fill"></i> Delete</a>
+                                    }
+                                }
                             </li>
                         }
                     </ul>

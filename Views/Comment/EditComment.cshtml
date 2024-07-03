@@ -1,7 +1,7 @@
-﻿@model Topic
+﻿@model Comment
 
 @{
-    ViewData["Title"] = "Edit Topic";
+    ViewData["Title"] = "Edit Comment";
 }
 
 <div class="row">
@@ -9,18 +9,19 @@
     <div class="col-sm-0 col-lg-2 col-xxl-3"></div>
     <div class="col-sm-12 col-lg-8 col-xxl-6">
         <div class="container mt-4">
-            <h1>Edit Topic</h1>
-            <form asp-controller="Topic" asp-action="EditTopic" method="post">
+            <h1>Edit Comment</h1>
+            <form asp-controller="Comment" asp-action="EditComment" method="post">
                 <input type="hidden" asp-for="TopicId" name="TopicId" value="@Model.TopicId" />
+                <input type="hidden" asp-for="CommentId" name="CommentId" value="@Model.CommentId" />
                 <input type="hidden" asp-for="UserId" name="UserId" value="@Model.UserId" />
                 <input type="hidden" asp-for="CreatedAt" name="CreatedAt" value="@Model.CreatedAt" />
                 <div class="form-group">
-                    <textarea id="Title" asp-for="Title" name="Title" class="form-control" rows="2" placeholder="Add Topic Title...">@Model.Title</textarea>
-                    <textarea id="ContentText" asp-for="ContentText" name="ContentText" class="form-control" rows="4" placeholder="Add Topic Content...">@Model.ContentText</textarea>
+                    <label for="CommentText">Comment</label>
+                    <textarea id="CommentText" asp-for="CommentText" name="CommentText" class="form-control" rows="4" placeholder="Add Comment..">@Model.CommentText</textarea>
                 </div>
                 <button type="submit" class="btn btn-outline-success mt-3 mb-5">Confirm Edit</button>
             </form>
-                <a asp-controller="Topic" class="btn btn-outline-danger" asp-action="DeleteTopic" asp-route-id="@Model.TopicId">Delete Topic</a>
+            <a asp-controller="Comment" class="btn btn-outline-danger" asp-action="DeleteComment" asp-route-id="@Model.CommentId">Delete Comment</a>
         </div>
     </div>
 
