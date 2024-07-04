@@ -22,7 +22,7 @@
             <th>Date</th>
             <th>Title</th>
             <th>Content</th>
-            <th>Düzenlemeler</th>
+            <th>Regulations</th>
         </tr>
     </thead>
     <tbody>
@@ -34,11 +34,11 @@
                 <td>@Html.DisplayFor(modelItem => item.Title)</td>
                 <td>@Html.DisplayFor(modelItem => item.ContentText)</td>
                 <td>
-                    <a class="btn btn-sm btn-warning" asp-action="EditTopic" asp-route-id="@item.TopicId">
+                    <a class="btn btn-sm btn-warning mb-1" asp-action="EditTopic" asp-route-id="@item.TopicId">
                         <i class="bi bi-pencil"></i> Edit
                     </a>
-                    <a class="btn btn-sm btn-success" asp-controller="Comment" asp-action="AddComment" asp-route-id="@item.TopicId" class="btn btn-success  pb-2 ms-5"><i class="bi bi-chat-dots"></i> Add Comment</a>
-                    <a class="btn btn-sm btn-primary" asp-controller="Comment" asp-action="ListComments" asp-route-id="@item.TopicId">
+                    <a class="btn btn-sm btn-success mb-1" asp-controller="Comment" asp-action="AddComment" asp-route-id="@item.TopicId" class="btn btn-success pb-2 ms-5"><i class="bi bi-chat-dots"></i> Add Comment</a>
+                    <a class="btn btn-sm btn-primary mb-1" asp-controller="Comment" asp-action="ListComments" asp-route-id="@item.TopicId">
                         <i class="bi bi-chat-dots-fill"></i> Comments
                     </a>
 

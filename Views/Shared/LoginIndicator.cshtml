@@ -4,7 +4,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class=""><a class="nav-link text-dark" asp-controller="Account" asp-action="AccountEdit">@User.FindFirst(x => x.Type == "UserName").Value</a></div>
+    <div class=""><a class="nav-link text-light" asp-controller="Account" asp-action="AccountEdit"><i class="bi bi-person"></i> @User.FindFirst(x => x.Type == "UserName").Value</a></div>
    
 }
 else
