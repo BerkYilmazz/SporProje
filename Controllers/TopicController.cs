@@ -86,13 +86,13 @@ namespace SporProje.Controllers
             var topic = await context.Topics.FirstOrDefaultAsync(x => x.TopicId == id);
             if (topic == null)
             {
-                return RedirectToAction("Index","Error");
+                return RedirectToAction("Index", "Error");
             }
             else
             {
                 return View(topic);
             }
-            
+
         }
 
         [HttpGet]
