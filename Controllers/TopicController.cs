@@ -33,7 +33,6 @@ namespace SporProje.Controllers
         [HttpPost]
         public IActionResult CreateTopic(Topic topic)
         {
-           
             if (topic==null)
             {
                 return RedirectToAction("MyTopics");

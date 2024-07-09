@@ -19,7 +19,6 @@ namespace SporProje.Controllers
         [HttpGet]
         public IActionResult AddComment(int id)
         {
-
             return View(id);
         }
 
@@ -53,6 +52,7 @@ namespace SporProje.Controllers
                 context.SaveChanges();
                 return RedirectToAction("MyTopics", "Topic");
             }
+
         }
 
         [HttpPost]
@@ -60,12 +60,6 @@ namespace SporProje.Controllers
         {
             if (comment != null)
             {
-                //I left that on purpose on here
-
-                //context.Comments.Update(comment);
-                //context.SaveChanges();
-                //return RedirectToAction("GetImage", "Post");
-
                 Comment c = context.Comments.FirstOrDefault(x => x.CommentId == comment.CommentId && x.UserId == comment.UserId);
                 c.CommentText = comment.CommentText;
                 context.Comments.Update(c);
@@ -76,6 +70,7 @@ namespace SporProje.Controllers
             {
                 return RedirectToAction("Index", "Error");
             }
+
         }
 
         [HttpGet]
@@ -91,16 +86,15 @@ namespace SporProje.Controllers
             {
                 return View("EditComment", c);
             }
+
         }
 
         [HttpGet]
         public IActionResult ListComments(int id)
         {
-            // var c = context.Likes.FirstOrDefault(x=>x.PhotoId==photoId);
             var comments = context.Comments.Where(x => x.TopicId == id).Include(u => u.User).ToList();
             return View(comments);
         }
-
 
     }
 }

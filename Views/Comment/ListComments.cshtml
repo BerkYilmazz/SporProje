@@ -22,23 +22,30 @@
                         @foreach (var item in Model)
                         {
                             <li class="list-group-item">
+                                
                                 <div class="d-flex justify-content-between">
                                     <strong class="h5 border-bottom border-2">@item.User.UserName</strong>
-                                    @* <span>@item.ToShortDateString()</span> *@
                                 </div>
+                                
                                 <p>@item.CommentText</p>
+                                
                                 @{
                                     if (item.UserId==u)
                                     {
                                         <a class="btn btn-sm btn-warning" asp-controller="Comment" asp-action="EditComment" asp-route-id="@item.CommentId"><i class="bi bi-pencil"></i> Edit</a>
                                         <a class="btn btn-sm btn-danger" asp-controller="Comment" asp-action="DeleteComment" asp-route-id="@item.CommentId"><i class="bi bi-trash-fill"></i> Delete</a>
                                     }
+
                                 }
                             </li>
                         }
+                   
                     </ul>
+                
                 </div>
+            
             </div>
+        
         </div>
     }
     else
@@ -49,11 +56,15 @@
                     <h2 class="border-bottom border-2 border-primary pb-2">Comments</h2>
                     <ul class="list-group mt-3">
                         <p class="h6">There are no comments on your topic yet..</p>
+                    
                     </ul>
-                </div>
-            </div>
-        </div>
-    }
 
+                </div>
+
+            </div>
+
+        </div>
+
+    }
 
 }

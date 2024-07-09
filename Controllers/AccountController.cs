@@ -24,8 +24,6 @@ namespace TrendyModa.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public IActionResult Register([FromForm] User user)
         {
@@ -41,7 +39,6 @@ namespace TrendyModa.Controllers
             }
             return View(user);
         }
-
 
         [HttpGet]
         public IActionResult Login()
@@ -61,14 +58,14 @@ namespace TrendyModa.Controllers
             }
 
             var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Email, user.Email),
-                        new Claim("Password", user.Password),
-                        new Claim("UserName", user.UserName),
-                        new Claim(ClaimTypes.Name, user.Name),
-                        new Claim(ClaimTypes.Surname, user.Surname),
-                        new Claim("UserId", user.UserId.ToString()),
-                    };
+            {
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("Password", user.Password),
+                new Claim("UserName", user.UserName),
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Surname, user.Surname),
+                new Claim("UserId", user.UserId.ToString()),
+            };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties();
@@ -113,7 +110,8 @@ namespace TrendyModa.Controllers
                 return RedirectToAction("LogoutIndex", "Account");
             }
             return RedirectToAction("Index", "Home");
-
         }
+
     }
+
 }

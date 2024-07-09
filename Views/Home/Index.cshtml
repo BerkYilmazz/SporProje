@@ -3,10 +3,13 @@
 @{
     ViewData["Title"] = "Topics";
 }
+
 <div class="row">
     <div class="col-9">
         <h1>Topics</h1>
+
     </div>
+
 </div>
 
 
@@ -21,22 +24,37 @@
             <th>Content</th>
             <th>Düzenlemeler</th>
         </tr>
+
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+
                 <td>@Html.DisplayFor(modelItem => item.User.UserName)</td>
+
                 <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+
                 <td>@Html.DisplayFor(modelItem => item.Title)</td>
+
                 <td>@Html.DisplayFor(modelItem => item.ContentText)</td>
+
                 <td>
+                    
                     <a class="btn btn-sm btn-success mb-1" asp-controller="Comment" asp-action="AddComment" asp-route-id="@item.TopicId"><i class="bi bi-chat-dots"></i> Add Comment</a>
+                    
                     <a class="btn btn-sm btn-primary" asp-controller="Comment" asp-action="ListComments" asp-route-id="@item.TopicId">
+                        
                         <i class="bi bi-chat-dots-fill"></i> Comments
+
                     </a>
+
                 </td>
+
             </tr>
         }
+
     </tbody>
+
 </table>
